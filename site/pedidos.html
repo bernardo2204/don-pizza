@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pizza - Meus Pedidos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo" href="index.html"><img src="../assets/logo-don-pizza.webp" alt="Logo Don Pizza"> DON <span>PIZZA</span></a>
+    <div class="links" id="areaConta">
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Cadastrar</a>
+    </div>
+    <div class="links">
+      <button class="btn-tema" id="btnTema" aria-label="Alternar tema">
+        <span class="trilha"><span class="bolinha"></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="pedidos-wrap">
+    <h2>Meus pedidos</h2>
+    <div id="listaPedidos"></div>
+  </div>
+
+  <footer>Don Pizza - Projeto Integrador, Colégio Cotemig - Dupla 11</footer>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/pedidos.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

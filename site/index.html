@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pizza - Cardápio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo"><img src="../assets/logo-don-pizza.webp" alt="Logo Don Pizza"> DON <span>PIZZA</span></div>
+    <div class="links" id="areaConta">
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Cadastrar</a>
+    </div>
+    <div class="links">
+      <a href="carrinho.html" class="btn-carrinho">
+        🛒 Carrinho
+        <span class="qtd" id="qtdCarrinho">0</span>
+      </a>
+      <button class="btn-tema" id="btnTema" aria-label="Alternar tema">
+        <span class="trilha"><span class="bolinha"></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>DON PIZZA</h1>
+    <p>Sabor em cada fatia!</p>
+    <div class="tricolor"><span></span><span></span><span></span></div>
+  </section>
+
+  <div class="busca-wrap">
+    <input type="text" id="campoBusca" placeholder="Buscar pizza, bebida...">
+  </div>
+
+  <div class="grid-produtos" id="gridProdutos"></div>
+
+  <section class="sobre">
+    <div class="sobre-texto">
+      <h2>De onde vem a Don Pizza</h2>
+      <p>
+        Começamos numa cozinha pequena, testando massa até acertar o ponto do forno.
+        Hoje a receita é a mesma: molho que cozinha devagar, queijo que puxa fio e
+        borda que não murcha no caminho até a sua casa.
+      </p>
+    </div>
+    <div class="sobre-fatos">
+      <div class="fato">
+        <strong>Forno a lenha</strong>
+        <span>O mesmo desde o primeiro dia</span>
+      </div>
+      <div class="fato">
+        <strong>Massa de 24h</strong>
+        <span>Fermentação lenta, borda leve</span>
+      </div>
+      <div class="fato">
+        <strong>Até 40 min</strong>
+        <span>Direto do forno pra sua mesa</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="info-funcionamento">
+    <span>Terça a domingo, 18h às 23h</span>
+    <span>Retirada no balcão ou entrega</span>
+  </div>
+
+  <footer>
+    Don Pizza - Projeto Integrador, Colégio Cotemig - Dupla 11<br>
+    Fotos dos produtos: Wikimedia Commons, uso educacional
+  </footer>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/carrinho.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

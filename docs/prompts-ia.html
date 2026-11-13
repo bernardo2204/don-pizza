@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Prompts de IA — Importação do JSON</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  header {
+    border-bottom: 3px solid #0f7a3d;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  header h1 { font-size: 20px; margin: 0; color:#111; }
+  header .sub { font-size: 12px; color:#555; margin-top:2px; }
+  header .meta { font-size:11px; color:#555; margin-top:6px; }
+  h2 {
+    font-size: 15px;
+    color: #0f7a3d;
+    border-left: 5px solid #c0392b;
+    padding-left: 8px;
+    margin: 22px 0 10px;
+  }
+  .prompt-box {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-left: 4px solid #d4af37;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .prompt-box .data { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .prompt-box .texto { font-size: 14px; font-weight: bold; font-style: italic; color: #111; }
+  .prompt-box .contexto { font-size: 12px; color: #555; margin-top: 6px; }
+  .prompt-box .gerado { font-size: 12.5px; margin-top: 8px; }
+  .prompt-box .gerado ul { margin: 4px 0 0 18px; padding: 0; }
+  code { background: #eee; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+  pre {
+    background: #1b1b1b;
+    color: #d8d8d8;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .ok { color: #0f7a3d; font-weight: bold; }
+  footer { margin-top: 24px; font-size: 10.5px; color:#888; border-top:1px solid #ddd; padding-top:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Don Pizza — Prompts de IA: leitura e importação do JSON em C#</h1>
+  <div class="sub">Projeto Integrador · Banco de Dados — 2º ano — 2026 · Colégio Cotemig</div>
+  <div class="meta">Dupla 11: Bernardo Pimenta &amp; David · 11/11/2026 · IA usada: <b>Claude (Claude Code)</b></div>
+</header>
+
+<h2>1. Como o trabalho foi feito</h2>
+<p>
+O desenvolvimento do app C# foi feito numa única sessão contínua com a IA, seguindo etapa por
+etapa um checklist do projeto (arquivo <code>CLAUDE.md</code>, que já tinha o formato do JSON de
+pedidos definido de antemão). O mesmo prompt abaixo foi reaproveitado ao longo da sessão pra
+avançar entre as etapas.
+</p>
+
+<h2>2. Prompt exato utilizado</h2>
+
+<div class="prompt-box">
+  <div class="data">11/11/2026</div>
+  <div class="texto">"continua"</div>
+  <div class="gerado">
+    <b>O que foi gerado nesta etapa (importação do JSON):</b>
+    <ul>
+      <li><code>PedidoJson.cs</code> / <code>ItemPedidoJson</code> — classes com propriedades
+          públicas pra desserializar o JSON</li>
+      <li><code>ImportadorPedidos.cs</code> — lê o arquivo, acha o cliente pelo
+          <code>cliente_email</code>, insere em <code>tblPedidos</code> (status
+          <code>"Recebido"</code>) e os itens em <code>tblItensPedido</code></li>
+      <li>Menu <b>"Importar Pedidos"</b> no <code>FrmPrincipal</code> (abre o arquivo, mostra
+          resumo da importação)</li>
+      <li><code>pedidos.json</code> de exemplo, na raiz do projeto</li>
+    </ul>
+  </div>
+</div>
+
+<h2>3. Reflexão sobre a adaptação do código gerado</h2>
+<p>
+O ponto que mais precisou de adaptação foi a desserialização em si: o padrão da professora (classe
+<code>Conexao</code> com <code>ExecutarComando</code>/<code>ExecutarConsulta</code>) resolve o
+acesso ao banco, mas não cobre leitura de JSON — não existe equivalente disso em SQL puro. A
+solução usada foi o <code>JavaScriptSerializer</code>
+(<code>System.Web.Script.Serialization</code>), que já vem embutido no .NET Framework, evitando
+instalar uma biblioteca nova (como o Newtonsoft.Json) só pra essa etapa.
+</p>
+<p>
+Pra encaixar no restante do padrão da professora, as classes <code>ItemPedidoJson</code> e
+<code>PedidoJson</code> usam os mesmos nomes de campo do JSON (<code>cliente_email</code>,
+<code>produto_id</code>, etc.) em vez do <code>PascalCase</code> comum em C# — isso evita escrever
+um conversor customizado só pra mapear nomes, o que seria um padrão mais avançado do que o
+necessário pro nível da matéria. A rotina de importação em si segue exatamente o mesmo estilo das
+outras classes do projeto: só usa <code>ExecutarComando</code> e <code>ExecutarConsulta</code>,
+sem Entity Framework, sem LINQ complexo. Pedido cujo e-mail não bate com nenhum cliente cadastrado
+é ignorado e reportado no resumo, em vez de travar a importação inteira.
+</p>
+
+<h2>4. Prova de que o código é funcional e está implementado no projeto</h2>
+<p>
+Antes de entrar no projeto, o código foi testado direto contra o banco <code>DB_Delivery</code>
+(fora da interface gráfica, usando as classes reais do projeto), com o <code>pedidos.json</code>
+de exemplo. Resultado do teste:
+</p>
+<pre>1) Importar() rodou: 1 pedido(s) importado(s) com sucesso.
+2) Pedido encontrado: id=3, status=Recebido, pagamento=Pix, total=64,90, cliente=joao@email.com
+3) Item: produto_id=2, quantidade=1, preco=49,90
+3) Item: produto_id=8, quantidade=1, preco=15,00
+4) Os 2 itens do pedido foram importados certinho.
+5) Limpeza: pedido de teste removido (itens foram junto, ON DELETE CASCADE).</pre>
+<p><span class="ok">✓</span> Arquivos implementados em <code>app-csharp/DonPizza/</code>:
+<code>PedidoJson.cs</code>, <code>ImportadorPedidos.cs</code>, e o menu "Importar Pedidos" em
+<code>FrmPrincipal.cs</code>/<code>FrmPrincipal.Designer.cs</code>. O projeto compila sem erros
+(MSBuild) com esses arquivos incluídos.</p>
+
+<footer>
+  Don Pizza — Projeto Integrador, Colégio Cotemig, 2º ano — 2026 · Dupla 11: Bernardo Pimenta &amp; David
+</footer>
+
+</body>
+</html>

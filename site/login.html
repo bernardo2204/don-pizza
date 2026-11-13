@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pizza - Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo" href="index.html"><img src="../assets/logo-don-pizza.webp" alt="Logo Don Pizza"> DON <span>PIZZA</span></a>
+    <div class="links">
+      <button class="btn-tema" id="btnTema" aria-label="Alternar tema">
+        <span class="trilha"><span class="bolinha"></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="form-box">
+    <h2>Entrar</h2>
+    <form onsubmit="fazerLogin(event)">
+      <label for="txtEmail">E-mail</label>
+      <input type="email" id="txtEmail" maxlength="100" required>
+
+      <label for="txtSenha">Senha</label>
+      <input type="password" id="txtSenha" maxlength="50" required>
+
+      <div class="erro" id="msgErro"></div>
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="troca">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+  </div>
+
+  <footer>Don Pizza - Projeto Integrador, Colégio Cotemig - Dupla 11</footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

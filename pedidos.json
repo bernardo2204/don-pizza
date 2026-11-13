@@ -1,0 +1,13 @@
+[
+  {
+    "cliente_email": "joao@email.com",
+    "data_pedido": "2026-11-09 19:30:00",
+    "forma_pagamento": "Pix",
+    "endereco_entrega": "Rua A, 100 - Centro",
+    "valor_total": 64.90,
+    "itens": [
+      { "produto_id": 2, "quantidade": 1, "preco_unitario": 49.90 },
+      { "produto_id": 8, "quantidade": 1, "preco_unitario": 15.00 }
+    ]
+  }
+]

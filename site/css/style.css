@@ -1,0 +1,410 @@
+/* Don Pizza - estilo compartilhado de todas as páginas
+   Cores da marca: fundo carvão, texto creme, verde e vermelho (Itália), dourado nos destaques */
+
+:root {
+  --bg: #1b140f;
+  --bg-card: #241b15;
+  --texto: #f4ead8;
+  --texto-fraco: #cdbfa8;
+  --verde: #3b6b42;
+  --vermelho: #a63b2e;
+  --dourado: #c99a3e;
+  --borda: #3a2e24;
+  --sombra: #000;
+  --fonte-display: 'Big Shoulders Display', 'Segoe UI', Arial, sans-serif;
+  --fonte-base: 'Figtree', 'Segoe UI', Arial, sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #f4ead8;
+  --bg-card: #ffffff;
+  --texto: #1b140f;
+  --texto-fraco: #6b5c48;
+  --borda: #e2d3ba;
+  --sombra: #d8c7a8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-base);
+  background: var(--bg);
+  color: var(--texto);
+  transition: background 0.2s, color 0.2s;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background: #15100c;
+  border-bottom: 3px solid var(--verde);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fonte-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: #f4ead8;
+}
+.navbar .logo span { color: var(--dourado); }
+.navbar .logo img { height: 38px; border-radius: 6px; }
+
+.navbar .links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.navbar .links a, .navbar .links button {
+  color: #f4ead8;
+  font-size: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.navbar .links a:hover, .navbar .links button:hover { color: var(--dourado); }
+.navbar .saudacao { color: var(--texto-fraco); font-size: 14px; }
+
+.btn-carrinho {
+  position: relative;
+  background: var(--verde) !important;
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.btn-carrinho .qtd {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--vermelho);
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Troca de tema (interruptor, sem emoji) ---------- */
+.btn-tema { background: none; border: none; padding: 0; cursor: pointer; line-height: 0; }
+.btn-tema .trilha {
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  position: relative;
+}
+.btn-tema .bolinha {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--dourado);
+  box-shadow: 4px -3px 0 0 var(--bg-card) inset;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+[data-theme="light"] .btn-tema .bolinha {
+  transform: translateX(20px);
+  box-shadow: none;
+}
+
+/* ---------- Hero ---------- */
+.hero { text-align: center; padding: 48px 20px 16px; }
+.hero h1 {
+  font-family: var(--fonte-display);
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.hero p { color: var(--texto-fraco); font-size: 16px; margin: 8px 0 0; }
+.hero .tricolor {
+  display: flex;
+  width: 120px;
+  height: 5px;
+  margin: 16px auto 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hero .tricolor span { flex: 1; }
+.hero .tricolor span:nth-child(1) { background: var(--verde); }
+.hero .tricolor span:nth-child(2) { background: var(--texto); }
+.hero .tricolor span:nth-child(3) { background: var(--vermelho); }
+
+/* ---------- Busca ---------- */
+.busca-wrap { display: flex; justify-content: center; padding: 10px 20px 30px; }
+.busca-wrap input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--borda);
+  background: var(--bg-card);
+  color: var(--texto);
+  font-size: 15px;
+}
+
+/* ---------- Grid de produtos ---------- */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+  padding: 10px 28px 40px;
+}
+
+.card-produto {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 var(--sombra);
+}
+.card-produto .foto-produto {
+  position: relative;
+  height: 150px;
+  background: #0f0b08;
+}
+.card-produto .foto-produto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-produto .fita {
+  position: absolute;
+  top: 10px;
+  left: -6px;
+  background: var(--verde);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 0 4px 4px 0;
+  transform: rotate(-3deg);
+  box-shadow: 2px 2px 0 var(--sombra);
+}
+.card-produto .info-produto {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+.card-produto h3 { margin: 0; font-size: 18px; }
+.card-produto p { margin: 0; color: var(--texto-fraco); font-size: 13.5px; flex-grow: 1; }
+.card-produto .preco { font-family: var(--fonte-display); font-size: 22px; font-weight: 700; color: var(--dourado); }
+.card-produto button {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.card-produto button:hover { background: #2c5233; }
+
+/* ---------- Sobre ---------- */
+.sobre {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  max-width: 980px;
+  margin: 10px auto 40px;
+  padding: 36px 28px;
+  background: var(--bg-card);
+  border-top: 3px solid var(--verde);
+  border-bottom: 3px solid var(--vermelho);
+}
+.sobre-texto h2 { font-family: var(--fonte-display); font-size: 28px; margin: 0 0 12px; }
+.sobre-texto p { color: var(--texto-fraco); line-height: 1.6; margin: 0; max-width: 46ch; }
+.sobre-fatos { display: flex; flex-direction: column; justify-content: center; gap: 0; }
+.fato {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borda);
+  display: flex;
+  flex-direction: column;
+}
+.fato:last-child { border-bottom: none; }
+.fato strong { font-family: var(--fonte-display); font-size: 19px; }
+.fato span { color: var(--texto-fraco); font-size: 13px; }
+
+.info-funcionamento {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--texto-fraco);
+  font-size: 13.5px;
+  padding: 0 20px 30px;
+}
+
+@media (max-width: 640px) {
+  .sobre { grid-template-columns: 1fr; }
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 18px;
+  color: var(--texto-fraco);
+  font-size: 12.5px;
+  border-top: 1px solid var(--borda);
+}
+
+/* ---------- Formulários (login/cadastro/perfil) ---------- */
+.form-box {
+  max-width: 420px;
+  margin: 40px auto;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 6px 6px 0 var(--sombra);
+}
+.form-box h2 { font-family: var(--fonte-display); font-size: 26px; margin-top: 0; text-align: center; }
+.form-box label { display: block; margin: 12px 0 4px; font-size: 14px; }
+.form-box input, .form-box select {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--borda);
+  background: var(--bg);
+  color: var(--texto);
+  font-size: 14.5px;
+}
+.form-box button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 11px;
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.form-box .erro { color: var(--vermelho); font-size: 13px; margin-top: 8px; }
+.form-box .troca { text-align: center; margin-top: 14px; font-size: 13.5px; }
+.form-box .troca a { color: var(--dourado); }
+
+/* ---------- Carrinho ---------- */
+.carrinho-wrap { max-width: 700px; margin: 30px auto; padding: 0 20px; }
+.carrinho-wrap h2 { font-family: var(--fonte-display); font-size: 28px; }
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.item-carrinho .nome { font-weight: bold; }
+.item-carrinho .qtd-controle button {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.item-carrinho .remover { color: var(--vermelho); cursor: pointer; margin-left: 12px; }
+.resumo-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fonte-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 20px 0;
+  padding-top: 14px;
+  border-top: 2px solid var(--borda);
+}
+.carrinho-vazio { text-align: center; color: var(--texto-fraco); padding: 40px 0; }
+
+/* ---------- Perfil ---------- */
+.perfil-cabeca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.perfil-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-family: var(--fonte-display);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Pedidos ---------- */
+.pedidos-wrap { max-width: 700px; margin: 30px auto; padding: 0 20px; }
+.pedidos-wrap h2 { font-family: var(--fonte-display); font-size: 28px; }
+.pedido-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  box-shadow: 5px 5px 0 var(--sombra);
+}
+.pedido-card .topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.pedido-card .numero { font-family: var(--fonte-display); font-size: 19px; }
+.pedido-card .data { color: var(--texto-fraco); font-size: 13px; }
+.pedido-card .linha-item { display: flex; justify-content: space-between; font-size: 14px; padding: 3px 0; }
+.pedido-card .rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--borda);
+}
+.pedido-card .total { font-family: var(--fonte-display); font-size: 18px; color: var(--dourado); }
+.status-badge {
+  background: var(--dourado);
+  color: #1b140f;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.pedidos-vazio { text-align: center; color: var(--texto-fraco); padding: 40px 0; }

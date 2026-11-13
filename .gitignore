@@ -1,0 +1,16 @@
+# Visual Studio / .NET
+app-csharp/**/bin/
+app-csharp/**/obj/
+app-csharp/**/.vs/
+app-csharp/**/packages/
+*.user
+*.suo
+
+# Material de referência da professora (não é nosso, não entra no repo)
+referencia/
+
+# Logs/screenshots de teste local
+.playwright-mcp/
+
+# Notas internas de trabalho com o Claude Code
+CLAUDE.md

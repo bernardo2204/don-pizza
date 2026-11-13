@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pizza - Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo" href="index.html"><img src="../assets/logo-don-pizza.webp" alt="Logo Don Pizza"> DON <span>PIZZA</span></a>
+    <div class="links">
+      <button class="btn-tema" id="btnTema" aria-label="Alternar tema">
+        <span class="trilha"><span class="bolinha"></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="form-box">
+    <h2>Criar conta</h2>
+    <form onsubmit="cadastrarCliente(event)">
+      <label for="txtNome">Nome completo</label>
+      <input type="text" id="txtNome" maxlength="100" required>
+
+      <label for="txtCpf">CPF</label>
+      <input type="text" id="txtCpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required>
+
+      <label for="txtTelefone">Telefone</label>
+      <input type="text" id="txtTelefone" inputmode="numeric" placeholder="(00) 00000-0000" maxlength="16" required>
+
+      <label for="txtEmail">E-mail</label>
+      <input type="email" id="txtEmail" maxlength="100" required>
+
+      <label for="txtSenha">Senha</label>
+      <input type="password" id="txtSenha" maxlength="50" required>
+
+      <label for="txtCep">CEP</label>
+      <input type="text" id="txtCep" inputmode="numeric" placeholder="00000-000" maxlength="9" required>
+
+      <label for="txtEndereco">Endereço</label>
+      <input type="text" id="txtEndereco" maxlength="150" required>
+
+      <div class="erro" id="msgErro"></div>
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p class="troca">Já tem conta? <a href="login.html">Entrar</a></p>
+  </div>
+
+  <footer>Don Pizza - Projeto Integrador, Colégio Cotemig - Dupla 11</footer>
+
+  <script src="js/mascara.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pizza - Carrinho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo" href="index.html"><img src="../assets/logo-don-pizza.webp" alt="Logo Don Pizza"> DON <span>PIZZA</span></a>
+    <div class="links" id="areaConta">
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Cadastrar</a>
+    </div>
+    <div class="links">
+      <button class="btn-tema" id="btnTema" aria-label="Alternar tema">
+        <span class="trilha"><span class="bolinha"></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="carrinho-wrap">
+    <h2>Seu carrinho</h2>
+
+    <div id="listaCarrinho"></div>
+
+    <div class="resumo-total" id="resumoTotal">
+      <span>Total</span>
+      <span id="valorTotal">R$ 0,00</span>
+    </div>
+
+    <div class="form-box" style="margin: 0 0 20px; max-width: 100%;">
+      <label for="cmbPagamento">Forma de pagamento</label>
+      <select id="cmbPagamento">
+        <option value="Pix">Pix</option>
+        <option value="Cartão de crédito">Cartão de crédito</option>
+        <option value="Cartão de débito">Cartão de débito</option>
+        <option value="Dinheiro">Dinheiro</option>
+      </select>
+
+      <button type="button" onclick="finalizarPedido()">Finalizar pedido</button>
+    </div>
+  </div>
+
+  <footer>Don Pizza - Projeto Integrador, Colégio Cotemig - Dupla 11</footer>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/carrinho.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>
